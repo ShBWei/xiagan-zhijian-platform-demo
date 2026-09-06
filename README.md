@@ -13,4 +13,4 @@
 
 GitHub Pages 发布后可通过以下地址访问：
 
-<https://shbwei.github.io/ganzhiyu-platform-demo/>
+<https://shbwei.github.io/xiagan-zhijian-platform-demo/>
