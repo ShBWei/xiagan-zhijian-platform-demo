@@ -245,6 +245,9 @@ export function AboutPlatform({
         <span className="section-kicker">ABOUT XIAGAN ZHIJIAN</span>
         <h2>关于侠肝智鉴</h2>
         <p>多组学驱动的肝癌 TKI 耐药预测体系构建与临床科研共享平台研发</p>
+        <span className="about-intro-caption">
+          医学问题牵引 · 跨学科协作 · 研究价值转化
+        </span>
       </header>
       <div className="about-origin">
         <span className="about-number">01 / 项目初心</span>
@@ -256,12 +259,15 @@ export function AboutPlatform({
           平台聚焦专项资料整合、证据复核与研究协作。预测体系和检测服务仍需经过相应验证及机构审核，页面不代表已取得临床应用资质。
         </p>
       </div>
-      <div className="about-section">
-        <span className="about-number">02 / 团队能力</span>
-        <h3>以医学问题为起点的协作团队</h3>
-        <p>
-          结合既往团队材料，以专业分工呈现协作方式，不公开成员身份及未公开成果。
-        </p>
+      <div className="about-section about-team">
+        <div className="team-heading">
+          <span className="about-number">02 / 团队能力</span>
+          <h3>以医学问题为起点的协作团队</h3>
+          <p>让临床研究、平台研发与服务协作在同一研究目标下相互衔接。</p>
+          <span className="team-caption">
+            以专业分工呈现团队，不公开成员身份及未公开成果。
+          </span>
+        </div>
         <div className="team-capabilities">
           {[
             [
@@ -280,7 +286,9 @@ export function AboutPlatform({
             const TeamIcon = Icon as typeof Users;
             return (
               <article key={title as string}>
-                <TeamIcon aria-hidden="true" />
+                <span className="team-icon">
+                  <TeamIcon aria-hidden="true" />
+                </span>
                 <h4>{title as string}</h4>
                 <p>{text as string}</p>
               </article>
@@ -288,7 +296,7 @@ export function AboutPlatform({
           })}
         </div>
       </div>
-      <div className="about-section">
+      <div className="about-section about-industry">
         <span className="about-number">03 / 产业协同设计</span>
         <h3>连接服务机构与科研工作空间</h3>
         <div className="industry-loop" aria-label="服务与研究闭环设计">
@@ -299,9 +307,12 @@ export function AboutPlatform({
             ['验证反馈', '候选模型验证，复核后迭代'],
           ].map(([title, text], index) => (
             <div key={title}>
-              <span>0{index + 1}</span>
+              <span className="industry-step">0{index + 1}</span>
               <h4>{title}</h4>
               <p>{text}</p>
+              {index < 3 && (
+                <ArrowRight className="industry-connector" aria-hidden="true" />
+              )}
             </div>
           ))}
         </div>
@@ -313,26 +324,29 @@ export function AboutPlatform({
           <ArrowRight />
         </Button>
       </div>
-      <div className="about-section">
+      <div className="about-section about-social">
         <span className="about-number">04 / 社会价值目标</span>
         <h3>关注患者可及性，也关注研究效率</h3>
         <div className="social-values">
           <article>
-            <HeartPulse />
+            <span className="value-category">面向患者</span>
+            <HeartPulse aria-hidden="true" />
             <h4>更清晰的服务路径</h4>
             <p>
               通过材料说明、进度沟通和随访流程设计，帮助患者理解服务过程与资料用途。
             </p>
           </article>
           <article>
-            <BookOpen />
+            <span className="value-category">面向科研与基层</span>
+            <BookOpen aria-hidden="true" />
             <h4>基层科普与科研共享</h4>
             <p>
               延续团队材料中的基层健康科普方向，规划公开知识入口与受控研究资源协作。
             </p>
           </article>
           <article>
-            <GraduationCap />
+            <span className="value-category">面向学生成长</span>
+            <GraduationCap aria-hidden="true" />
             <h4>跨学科实践培养</h4>
             <p>
               围绕文献研读、临床问题与平台研发，形成学生参与真实问题研究的实践路径。
@@ -343,7 +357,7 @@ export function AboutPlatform({
           以上为价值方向，不代表已证明降低治疗费用、改善疗效或创造就业。
         </p>
       </div>
-      <div className="about-section">
+      <div className="about-section about-roadmap">
         <span className="about-number">05 / 发展规划</span>
         <h3>从可用原型，逐步走向经验证的服务</h3>
         <ol className="roadmap">
