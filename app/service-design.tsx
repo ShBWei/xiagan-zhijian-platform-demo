@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { omicsDimensions, patientSteps, roleGuides } from './service-content';
+import { PatientPractice } from './research-journey';
 
 export function ServiceEntrances({
   navigate,
@@ -33,7 +34,7 @@ export function ServiceEntrances({
           icon: Microscope,
           title: '临床与科研人员',
           text: '组织多组学资料，追溯研究证据',
-          destination: '多组学工作台',
+          destination: '科研任务体验',
         },
         {
           icon: Building2,
@@ -120,6 +121,7 @@ export function PatientService() {
           </div>
         </div>
       </section>
+      <PatientPractice />
       <section className="service-duo">
         <article className="panel service-info">
           <h2>进度与报告服务</h2>
@@ -179,6 +181,16 @@ export function OperationGuide({
         前往{guide.destination}
         <ArrowRight />
       </Button>
+      {role === 1 && (
+        <Button
+          className="journey-action"
+          variant="outline"
+          onClick={() => navigate('科研任务体验')}
+        >
+          开始科研任务体验
+          <ArrowRight />
+        </Button>
+      )}
     </section>
   );
 }

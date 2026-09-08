@@ -51,6 +51,7 @@ import {
   type Detail,
 } from './platform-modules';
 import { serviceModules } from './service-content';
+import { ResearchJourney } from './research-journey';
 import {
   AboutPlatform,
   OmicsBlueprint,
@@ -76,6 +77,7 @@ const navGroups = [
   {
     title: '核心能力',
     items: [
+      [FlaskConical, '科研任务体验'],
       [Layers3, '多组学工作台'],
       [BrainCircuit, '智能分析'],
       [FileBarChart, '证据与报告'],
@@ -750,6 +752,8 @@ export default function Home() {
           </div>
           {activeNav === '患者服务' ? (
             <PatientService />
+          ) : activeNav === '科研任务体验' ? (
+            <ResearchJourney />
           ) : activeNav === '操作指南' ? (
             <OperationGuide navigate={navigate} />
           ) : activeNav !== '平台总览' ? (

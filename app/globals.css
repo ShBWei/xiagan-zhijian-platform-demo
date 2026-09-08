@@ -2,6 +2,177 @@
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
+.journey-boundary {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  margin-top: 18px;
+  border: 1px solid #d5e4f7;
+  border-radius: 12px;
+  background: #edf5ff;
+  font-size: 14px;
+  color: #486384;
+  line-height: 1.8;
+}
+.journey-boundary svg {
+  width: 20px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.journey-field {
+  display: grid;
+  gap: 10px;
+  margin: 22px 0;
+}
+.journey-field label,
+.report-preview > label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #334f75;
+}
+.journey-field input,
+.journey-field textarea,
+.report-preview textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #c9d9ef;
+  border-radius: 10px;
+  padding: 13px 15px;
+  background: #fbfdff;
+  color: #223b5c;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.journey-field textarea,
+.report-preview textarea {
+  resize: vertical;
+}
+.journey-field small {
+  color: #657992;
+  font-size: 13px;
+}
+.journey-choices {
+  margin: 24px 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  border: 0;
+}
+.journey-choices legend {
+  margin-bottom: 14px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.journey-action {
+  margin-top: 20px;
+}
+.journey-error {
+  color: #a02e37 !important;
+  background: #fff1f2;
+  padding: 12px;
+  margin-top: 16px;
+  border-radius: 8px;
+}
+.journey-checks {
+  margin-top: 24px;
+  padding: 20px;
+  background: #f2f6fc;
+  border-radius: 12px;
+}
+.journey-checks h3 {
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 650;
+}
+.journey-checks article {
+  padding: 14px 0;
+  border-top: 1px solid #dce6f4;
+}
+.journey-checks b {
+  font-size: 15px;
+}
+.journey-checks p {
+  font-size: 14px;
+  margin-top: 6px;
+}
+.journey-resources {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+.journey-resources article {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid #dce7f5;
+  border-radius: 12px;
+  padding: 20px;
+}
+.journey-resources h3 {
+  font-size: 17px;
+  font-weight: 650;
+}
+.journey-resources p {
+  font-size: 14px;
+  flex: 1;
+}
+.journey-resources a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+.journey-resources a svg {
+  width: 15px;
+}
+.journey-resources button {
+  white-space: normal;
+  height: auto;
+  min-height: 36px;
+}
+.report-preview {
+  display: grid;
+  justify-items: start;
+  gap: 14px;
+  margin-top: 24px;
+}
+.report-preview textarea {
+  font-size: 14px;
+  line-height: 1.9;
+  min-height: 360px;
+}
+.patient-case {
+  margin-top: 18px;
+  padding: 22px;
+  background: #f1f6fe;
+  border-radius: 12px;
+}
+.patient-case h3 {
+  font-size: 20px;
+  font-weight: 650;
+  margin: 8px 0 14px;
+}
+.patient-case p + p {
+  margin-top: 12px;
+}
+.research-journey button:disabled {
+  cursor: not-allowed;
+}
+.journey-field textarea:focus-visible,
+.report-preview textarea:focus-visible {
+  outline: 3px solid #83aaff;
+  outline-offset: 3px;
+}
+@media (max-width: 900px) {
+  .journey-resources {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Patient and research service extension: scoped to preserve the workspace. */
 .service-entrances {
   display: grid;

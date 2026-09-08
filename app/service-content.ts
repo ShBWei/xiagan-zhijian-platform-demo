@@ -4,6 +4,10 @@ export const serviceModules: Record<
   string,
   { intro: string; items: Detail[] }
 > = {
+  科研任务体验: {
+    intro: '配置演示项目，检查虚构资料，整理来源并导出研究记录。',
+    items: [],
+  },
   患者服务: {
     intro:
       '了解检测申请、材料准备、报告解读与随访的服务流程。当前仅供体验，不接收真实申请。',
