@@ -46,12 +46,32 @@ import {
   publicDatasetCards,
   publicSources,
 } from './dashboard-data';
-import { moduleDetails, type Detail } from './platform-modules';
+import {
+  moduleDetails as existingModules,
+  type Detail,
+} from './platform-modules';
+import { serviceModules } from './service-content';
+import {
+  AboutPlatform,
+  OmicsBlueprint,
+  OperationGuide,
+  PatientService,
+  ServiceEntrances,
+} from './service-design';
+
+const moduleDetails = { ...existingModules, ...serviceModules };
 
 const navGroups = [
   {
     title: '平台工作台',
     items: [[LayoutDashboard, '平台总览']],
+  },
+  {
+    title: '患者与服务',
+    items: [
+      [Activity, '患者服务'],
+      [ShieldCheck, '授权数据回流'],
+    ],
   },
   {
     title: '核心能力',
@@ -67,6 +87,8 @@ const navGroups = [
       [Building2, '应用场景'],
       [Users, '科研协作'],
       [ShieldCheck, '数据治理'],
+      [Building2, '团队与机构服务'],
+      [CircleHelp, '操作指南'],
     ],
   },
 ] as const;
@@ -512,19 +534,24 @@ function ModuleView({
       )}
       <div className="module-cards">
         {module.items.map((item, index) => {
-          const Icon = [Layers3, FileSearch, ClipboardCheck][index];
+          const Icon = [Layers3, FileSearch, ClipboardCheck][index % 3];
           return (
             <article className="panel module-card" key={item.title}>
               <Icon />
               <h2>{item.title}</h2>
               <p>{item.description}</p>
-              <Button variant="outline" onClick={() => showDetail(item)}>
+              <Button
+                variant="outline"
+                aria-label={`查看${item.title}详情`}
+                onClick={() => showDetail(item)}
+              >
                 查看详情 <ArrowRight />
               </Button>
             </article>
           );
         })}
       </div>
+      {name === '多组学工作台' && <OmicsBlueprint />}
       {name === '多组学工作台' && (
         <section className="panel">
           <div className="panel-header">
@@ -721,10 +748,15 @@ export default function Home() {
             </div>
             <span>侠肝智鉴 · 产品原型</span>
           </div>
-          {activeNav !== '平台总览' ? (
+          {activeNav === '患者服务' ? (
+            <PatientService />
+          ) : activeNav === '操作指南' ? (
+            <OperationGuide navigate={navigate} />
+          ) : activeNav !== '平台总览' ? (
             <ModuleView name={activeNav} showDetail={setDetail} />
           ) : (
             <>
+              <ServiceEntrances navigate={navigate} />
               <section className="showcase-hero">
                 <div className="hero-copy">
                   <p className="hero-eyebrow">
@@ -736,8 +768,8 @@ export default function Home() {
                     <span>研究辅助分析平台</span>
                   </h1>
                   <p className="hero-lead">
-                    将合规数据接入、研究分析、证据整合与报告协作串联为一体化工作流，
-                    为肝癌耐药机制探索提供清晰、可追溯的数字化研究工具。
+                    连接患者服务与科研协作，围绕授权数据回流、多组学资料组织和证据复核，
+                    探索肝癌 TKI 耐药研究与临床科研共享的专项工作流。
                   </p>
                   <div className="trust-row">
                     <span>
@@ -757,6 +789,7 @@ export default function Home() {
                     <Button className="primary-action" onClick={goToWorkspace}>
                       进入演示工作台 <ArrowRight />
                     </Button>
+                    <a href="#about-platform">团队与社会价值介绍</a>
                     <span>科研辅助展示，不作为临床诊断或治疗依据</span>
                   </div>
                 </div>
@@ -1010,6 +1043,7 @@ export default function Home() {
                   ))}
                 </div>
               </section>
+              <AboutPlatform navigate={navigate} />
             </>
           )}
           <footer>
